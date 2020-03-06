@@ -1,12 +1,8 @@
-// TIME LIMIT EXCEEDED, ANOTHER ANSWER EXPECTED
-// TIME LIMIT EXCEEDED, ANOTHER ANSWER EXPECTED
-// TIME LIMIT EXCEEDED, ANOTHER ANSWER EXPECTED
-
 #include <iostream>
 #include <queue>
 
 int m, n;
-bool closed[1002][1002][2] = {};
+bool closed[3002][3002][2] = {};
 
 struct Status {
     int leftMissionary;
@@ -18,14 +14,18 @@ struct Status {
     bool canMove(int movingMissonary, int movingCannibal) {
         int& i = movingMissonary;
         int& j = movingCannibal;
-        if ((i >= j || i == 0) && (i + j <= n)) {
+        if ((i >= j || i == 0)) {
             if (isBoatLeft) {
-                return (leftMissionary - i >= leftCannibal - j || leftMissionary - i == 0) &&
+                return ((leftMissionary - i >= 0) && (leftCannibal - j >= 0) &&
+                            leftMissionary - i >= leftCannibal - j ||
+                        leftMissionary - i == 0) &&
                        (m - leftMissionary + i >= m - leftCannibal + j ||
                         m - leftMissionary + i == 0) &&
                        !closed[leftMissionary - i][leftCannibal - j][!isBoatLeft];
             } else {
-                return (leftMissionary + i >= leftCannibal + j || leftMissionary + i == 0) &&
+                return ((leftMissionary + i >= 0) && (leftCannibal + j >= 0) &&
+                            leftMissionary + i >= leftCannibal + j ||
+                        leftMissionary + i == 0) &&
                        (m - leftMissionary - i >= m - leftCannibal - j ||
                         m - leftMissionary - i == 0) &&
                        !closed[leftMissionary + i][leftCannibal + j][!isBoatLeft];
@@ -63,22 +63,20 @@ int main() {
             return 0;
         }
         if (node.isBoatLeft) {
-            for (int i = node.leftMissionary; i >= 0; i--) {
-                for (int j = node.leftCannibal; j >= 0; j--) {
-                    if (i == j && j == 0)
-                        continue;
-                    if (node.canMove(i, j)) {
-                        fringe.push(node.generate(i, j));
+            for (int i = n; i >= 1; i--) {
+                for (int j = i; j >= 0; j--) {
+                    if (node.canMove(i - j, j)) {
+                        fringe.push(node.generate(i - j, j));
                     }
                 }
             }
         } else {
-            for (int i = 0; i <= m - node.leftMissionary; i++) {
-                for (int j = 0; j <= m - node.leftCannibal; j++) {
+            for (int i = 1; i <= n; i++) {
+                for (int j = 0; j <= i; j++) {
                     if (i == j && j == 0)
                         continue;
-                    if (node.canMove(i, j)) {
-                        fringe.push(node.generate(i, j));
+                    if (node.canMove(i - j, j)) {
+                        fringe.push(node.generate(i - j, j));
                     }
                 }
             }
