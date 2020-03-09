@@ -14,4 +14,4 @@ View [pdlteam/pdl-manual](https://github.com/pdlteam/pdl-manual) for detail. We 
 
 Certainly, the compiler hasn't released yet. But it is built into an Online Judge Platform [OpenJudge](http://openjudge.cn), which is maintained by Peking University too.
 
-You cannot find the choice to compile your code by PDL in most of the submit pages. But you might be able to find some example problems here, and be careful that it will expire at any time.
+You cannot find the choice to compile your code by PDL in most of the submit pages. But you might be able to find some example problems [here](http://pdl.openjudge.cn/), and be careful that it will expire at any time.
