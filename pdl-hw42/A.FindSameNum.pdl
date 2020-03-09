@@ -1,0 +1,12 @@
+// Time: 40 min
+#input
+    n of int in [1,1000];
+    array of (int in [0,10000])[1~n];
+
+#required
+    i of int in [1,n];
+    j of int in [1,n];
+    (i != j) and (array[i] = array[j]);
+
+#output
+    array[i];

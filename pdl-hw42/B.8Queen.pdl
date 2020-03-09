@@ -1,0 +1,15 @@
+// Time: 5 min
+#input
+    a of int in [1,8];
+    b of int in [1,8];
+
+#required
+    map of (int in [1,8])[1~8];
+    map[1] = a;
+    map[2] = b;
+    alldiff map;
+    map[i] - map[j] != i - j : forall (i,j) (i != j);
+    map[j] - map[i] != i - j : forall (i,j) (i != j);
+
+#output
+    map;
