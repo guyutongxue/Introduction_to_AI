@@ -1,3 +1,4 @@
+// Time: 25 min
 #input
     n of int in [1,110];
     distance of (int in [0,1010])[1~n][1~n];

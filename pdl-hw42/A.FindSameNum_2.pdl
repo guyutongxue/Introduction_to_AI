@@ -1,0 +1,13 @@
+// Time: 5 min
+#input
+    n of int in [1,1000];
+    array of (int in [0,10000])[1~n];
+
+#required
+    ans of int in [1,1000];
+    count [
+        array[i] : forall i (array[i] = ans)
+    ] = 2;
+
+#output
+    ans;
