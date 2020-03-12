@@ -1,0 +1,13 @@
+// Time: 5 min
+#input
+    n of int in [1,110];
+    distance of (int in [0,1010])[1~n][1~n];
+
+#required
+    path of (int in [1,n])[1~n];
+    alldiff path;
+
+#objective
+    minimize summation[
+        distance[path[i]][path[i + 1]] : forall i ((1 <= i) and (i < n))
+    ];
